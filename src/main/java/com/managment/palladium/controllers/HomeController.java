@@ -1,4 +1,4 @@
-package com.managment.palladium.Controllers;
+package com.managment.palladium.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
