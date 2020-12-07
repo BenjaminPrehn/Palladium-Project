@@ -3,18 +3,23 @@ package com.managment.palladium.entities;
 import javax.persistence.*;
 
 @Entity
-public class UserLogin {
+@Table(name = "user_accounts")
+public class UserAccount {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_login_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_accounts_seq")
+    @SequenceGenerator(name="user_accounts_seq", allocationSize = 1)
+    @Column(name = "user_id")
     private long userId;
 
+    @Column(name = "username")
     private String username;
+
     private String email;
     private String password;
     private boolean enabled = true;
 
-    public UserLogin() {
+    public UserAccount() {
     }
 
     public long getUserId() {
