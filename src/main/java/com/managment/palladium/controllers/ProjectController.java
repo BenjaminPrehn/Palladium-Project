@@ -24,7 +24,7 @@ public class ProjectController {
     ProjectService proService;
 
     @Autowired
-    EmployeeRepository empRepo;
+    EmployeeService empService;
 
     // An empty getmapping maps to the requestmapping for the controller class (in this case /projects)
     @GetMapping
@@ -36,8 +36,11 @@ public class ProjectController {
 
     @GetMapping("/new")
     public String displayProjectForm(Model model) {
+
         Project aProject = new Project();
+        List<Employee> employees = empService.getAll();
         model.addAttribute("project", aProject);
+        model.addAttribute("allEmployees" , employees);
 
         return "projects/project-new";
     }
@@ -55,8 +58,9 @@ public class ProjectController {
     public String displayProjectUpdateForm(@RequestParam("id") long theId, Model model) {
 
         Project thePro = proService.findByProjectId(theId);
-
+        List<Employee> employees = empService.getAll();
         model.addAttribute("project", thePro);
+        model.addAttribute("allEmployees" , employees);
 
 
         return "projects/project-new";

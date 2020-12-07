@@ -1,9 +1,9 @@
 package com.managment.palladium.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -17,6 +17,16 @@ public class Employee {
     private String email;
     private String role;
 
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+            fetch = FetchType.LAZY)
+    @JoinTable(name = "project_employee",
+            joinColumns = @JoinColumn(name="employee_Id"),
+            inverseJoinColumns = @JoinColumn(name="project_Id")
+    )
+
+    @JsonIgnore
+    private List<Project> projects;
+
     public Employee() {
     }
 
@@ -26,6 +36,14 @@ public class Employee {
         this.lastname = lastname;
         this.email = email;
         this.role = role;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     public long getEmployeeId() {
