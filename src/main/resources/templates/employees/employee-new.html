@@ -8,48 +8,35 @@
 <br>
 <div class="container">
 
-
     <form th:action="@{/employees/save}" th:object="${employee}" method="POST">
-
-
         <!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
         <input type="hidden" th:field="${employee.employeeId}"/>
 
-        <div class="form-group row">
-            <input type="text" placeholder="First Name" th:field="${employee.firstname}">
-            <span style="color:red" th:if="${#fields.hasErrors('firstname')}"
-                  th:errors="${employee.firstname}">
-			</span>
+        <div class="mb-3">
+            <label for="exampleInputEmai" class="form-label">Firstname</label>
+            <input type="text" class="form-control" id="exampleInputEmai" th:field="${employee.firstname}">
+            <span style="color:red" th:if="${#fields.hasErrors('firstname')}" th:errors="${employee.firstname}"></span>
+        </div>
+        <div class="mb-3">
+            <label for="lastname" class="form-label">Lastname</label>
+            <input type="text" class="form-control" id="lastname" th:field="${employee.lastname}">
+            <span style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="${employee.lastname}"></span>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" th:field="${employee.email}">
+            <span style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="${employee.email}"></span>
+        </div>
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <input type="text" class="form-control" id="role" th:field="${employee.role}">
+            <span style="color:red" th:if="${#fields.hasErrors('role')}" th:errors="${employee.role}"></span>
         </div>
 
-        <div class="form-group row">
-            <input type="text" placeholder="Last Name" th:field="${employee.lastname}">
-            <span style="color:red" th:if="${#fields.hasErrors('lastname')}"
-                  th:errors="${employee.lastname}">
-			</span>
-        </div>
-
-        <div class="form-group row">
-            <input type="text" placeholder="Email Address" th:field="${employee.email}">
-            <span style="color:red" th:if="${#fields.hasErrors('email')}"
-                  th:errors="${employee.email}">
-			</span>
-        </div>
-
-        <div class="form-group row">
-            <input type="text" placeholder="Email Address" th:field="${employee.role}">
-            <span style="color:red" th:if="${#fields.hasErrors('role')}"
-                  th:errors="${employee.role}">
-			</span>
-        </div>
-
-        <button class="btn btn-info col-2" type="submit">Enter Employee</button>
-
+        <button type="submit" class="btn btn-primary">Enter Employee</button>
     </form>
+
 </div>
-
-
-
 
 </body>
 </html>
