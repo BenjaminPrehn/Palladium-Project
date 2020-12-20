@@ -25,6 +25,7 @@ public class HomeController {
     @Autowired
     ProjectService proService;
 
+    // Loading in all data from database to show on our Main Page
     @GetMapping("/")
     public String displayHome(Model model) throws JsonProcessingException {
 

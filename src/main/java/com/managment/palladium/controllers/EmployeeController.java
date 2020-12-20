@@ -20,7 +20,7 @@ public class EmployeeController {
     @Autowired
     EmployeeService empService;
 
-
+    // Loading all data from Employee table in our database
    @GetMapping
     public String displayEmployees(Model model) {
         Iterable<Employee> employees = empService.getAll();
@@ -28,6 +28,7 @@ public class EmployeeController {
         return "employees/employee-view";
     }
 
+    // Loading form to create a new employee
     @GetMapping("/new")
     public String displayEmployeeForm(Model model) {
 
@@ -38,6 +39,7 @@ public class EmployeeController {
         return "employees/employee-new";
     }
 
+    // Saving the employee to our databae
     @PostMapping("/save")
     public String createEmployee(Model model, @Valid Employee employee, Errors errors) {
 
@@ -50,6 +52,7 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
+    // Using the same page as create employee to load in an employee and change the data.
     @GetMapping("/update")
     public String displayEmployeeUpdateForm(@RequestParam("id") long theId, Model model) {
 
@@ -61,7 +64,7 @@ public class EmployeeController {
         return "employees/employee-new";
     }
 
-
+    // Delete an employee from the database.
     @GetMapping("delete")
     public String deleteEmployee(@RequestParam("id") long theId, Model model) {
         Employee theEmp = empService.findByEmployeeId(theId);
