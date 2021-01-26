@@ -34,6 +34,7 @@ public class ProjectController {
         return "projects/project-view";
     }
 
+    // Creation of new project
     @GetMapping("/new")
     public String displayProjectForm(Model model) {
 
@@ -45,7 +46,7 @@ public class ProjectController {
         return "projects/project-new";
     }
 
-    // This handles saving to the h2 database
+    // This handles saving to the database
     @PostMapping("/save")
     public String createProjectForm(Project project, Model model) {
         proService.save(project);
@@ -54,6 +55,7 @@ public class ProjectController {
         return "redirect:/projects";
     }
 
+    // Update a project - Loading same template as new Project
     @GetMapping("/update")
     public String displayProjectUpdateForm(@RequestParam("id") long theId, Model model) {
 
@@ -66,7 +68,7 @@ public class ProjectController {
         return "projects/project-new";
     }
 
-
+    // Delete a project from the database
     @GetMapping("delete")
     public String deleteProject(@RequestParam("id") long theId, Model model) {
         Project thePro = proService.findByProjectId(theId);

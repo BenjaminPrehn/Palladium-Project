@@ -17,6 +17,7 @@ public class SecurityController {
     @Autowired
     BCryptPasswordEncoder bCryptEncoder;
 
+    //Loding our register page for people to signup
     @GetMapping("/register")
     public String register(Model model){
         UserAccount userAccount = new UserAccount();
@@ -25,6 +26,7 @@ public class SecurityController {
         return "security/register";
     }
 
+    // Saving the user to our database and using Bcrypt to encrypt the password before saving to database.
     @PostMapping("register/save")
     public String saveUser(Model model, UserAccount user){
         user.setPassword(bCryptEncoder.encode(user.getPassword()));

@@ -14,6 +14,7 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository empRepo;
 
+    // CRUD OPERATIONS
     public Employee save(Employee employee){
         return empRepo.save(employee);
     }

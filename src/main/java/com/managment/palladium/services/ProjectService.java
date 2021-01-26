@@ -14,6 +14,7 @@ public class ProjectService {
     @Autowired
     ProjectRepository proRepo;
 
+    // CRUD OPERATIONS
     public Project save(Project project){
         return proRepo.save(project);
     }

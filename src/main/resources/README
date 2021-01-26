@@ -1,0 +1,11 @@
+# Preconditions
+
+To run the program you need a active PostgresSQL database:
+- Run it by change it to your database name URL in application properties.
+- Change the username and password to match your database
+- Run a query with the schema.sql and  then data.sql to have some data running when testing the prototype.
+
+Default password to run our program:
+Username: admin
+Password: admin
+

@@ -20,6 +20,7 @@ public class SecuirtyConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     BCryptPasswordEncoder bCryptEncoder;
 
+    // Authentication used to load in data from the database and check where the info is matching
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication()
@@ -30,6 +31,7 @@ public class SecuirtyConfiguration extends WebSecurityConfigurerAdapter {
 
     }
 
+    // Security settings, which can be changed regarding the user ROLE
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
